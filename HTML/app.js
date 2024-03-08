@@ -26,5 +26,7 @@ app.use('/', rutasHome);
 const rutasDeuda = require('./routes/deuda.routes');
 app.use('/user', rutasDeuda);
 
+const rutasPagoAlumno = require('./routes/pago_alumno.routes');
+app.use('/user/alumno', rutasPagoAlumno);
 
 app.listen(3000);
