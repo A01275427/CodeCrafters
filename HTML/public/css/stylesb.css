@@ -11,7 +11,7 @@ body {
     position: relative;
     min-height: 100vh;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .sidebar{
@@ -255,16 +255,42 @@ body {
     left: 80%;
 }
 
-.home_content{
+.page_content{
     position: absolute;
     margin: 50px;
     height: 100%;
-    width: calc(100% - 78px);
+    width: calc(100% - 150px);
     left: 78px;
     transition: all 0.5s ease;
 }
 
-.sidebar.active ~ .home_content{
+.sidebar.active ~ .page_content{
     width: calc(100% - 240px);
     left: 240px;
+}
+
+.page_content h1{
+    color:rgb(43, 43, 43);
+}
+
+.page_items{
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    margin-top: 10px;
+    outline-color:#350202;
+    outline-width: 10px;
+    width: 50%;
+    height: 100%;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    padding: 12px;
+    justify-content: center;
+    color:#484848;
+}
+
+checkbox #materia{
+    width:100px;
 }

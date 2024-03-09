@@ -1,4 +1,6 @@
 <%- include ('includes/sidebar.ejs') %>
+<% let name = 'Leví'%>
+<% const costoCredito = 1000 %>
 
 <!DOCTYPE HTML>
 <html>
@@ -9,4 +11,45 @@
         <link rel="stylesheet" href="/css/stylesb.css">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
+    <body>
+        <div class="page_content">
+            <h1>Bienvenido al portal de pago, <%= name %>.</h1>
+            <div class="page_items">
+                <div class="item">
+                    Materia 1
+                    <br><h6><input type="checkbox" id="materia"> Créditos: 4 | Costo: $<%=costoCredito*4%>
+                    | Maestro: Ernesto Jirafales Llano | Horario: 16:00-18:00 | Semestre 6</h6>
+                    
+                </div>
+                <div class="item">
+                    Materia 2
+                    <br><h6><input type="checkbox" id="materia"> Créditos: 4 | Costo: $<%=costoCredito*4%>
+                        | Maestro: Ernesto Jirafales Llano | Horario: 16:00-18:00 | Semestre 6</h6>
+                </div>
+                <div class="item">
+                    Materia 3
+                    <br><h6><input type="checkbox" id="materia"> Créditos: 4 | Costo: $<%=costoCredito*4%>
+                        | Maestro: Ernesto Jirafales Llano | Horario: 16:00-18:00 | Semestre 6</h6>
+                </div>
+                <div class="item">
+                    Materia 4
+                    <br><h6><input type="checkbox" id="materia"> Créditos: 4 | Costo: $<%=costoCredito*4%>
+                        | Maestro: Ernesto Jirafales Llano | Horario: 16:00-18:00 | Semestre 6</h6>
+                </div>
+                <div class="item">
+                    Materia 5
+                    <br><h6><input type="checkbox" id="materia"> Créditos: 4 | Costo: $<%=costoCredito*4%>
+                        | Maestro: Ernesto Jirafales Llano | Horario: 16:00-18:00 | Semestre 6</h6>
+                </div>
+                <div class="item">
+                    Materia 6
+                    <br><h6><input type="checkbox" id="materia"> Créditos: 4 | Costo: $<%=costoCredito*4%>
+                        | Maestro: Ernesto Jirafales Llano | Horario: 16:00-18:00 | Semestre 6</h6>
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </body>
 </html>
