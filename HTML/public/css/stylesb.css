@@ -289,8 +289,6 @@ body {
     padding: 12px;
     justify-content: center;
     color:#484848;
+    z-index: -1;
 }
 
-checkbox #materia{
-    width:100px;
-}

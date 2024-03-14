@@ -29,4 +29,6 @@ app.use('/user', rutasDeuda);
 const rutasPagoAlumno = require('./routes/pago_alumno.routes');
 app.use('/user/alumno', rutasPagoAlumno);
 
-app.listen(3000);
+
+
+app.listen(2050);
