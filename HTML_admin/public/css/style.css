@@ -14,11 +14,6 @@ body,html{
     overflow-y: auto;
 }
 
-.contenido {
-  min-height: 150vh; /* Esto hace que el mínimo de altura sea igual a la altura de la ventana del navegador */
-  padding-bottom: 10000px; /* Asegura algo de espacio extra abajo para forzar el desplazamiento */
-}
-
 .wrapper {
     width: 420px;
     background: transparent;
