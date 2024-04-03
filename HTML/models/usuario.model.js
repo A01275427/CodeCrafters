@@ -13,7 +13,7 @@ module.exports = class Usuario {
         console.log(this.password);
         return bcrypt.hash(this.password, 12).then((password_cifrado) => {
             return db.execute(
-                'INSERT INTO Usuario (username, password) VALUES (?, ?)',
+                'INSERT INTO Usuario (Nombre, Matricula, Correo_electronico, Contrasena, Beca_actual, Referencia) VALUES (?, ?, ?, ?, ? , ?)',
                 [this.username, password_cifrado]
             );
         })
