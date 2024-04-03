@@ -24,7 +24,7 @@ const csrfProtection = csrf();
 app.use(csrfProtection); 
 
 app.use((request, response, next) => {
-    console.log('Test');
+    console.log('Start!');
     next();
 })
 
