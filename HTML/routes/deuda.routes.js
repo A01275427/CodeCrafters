@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const isAuth = require('../util/is-auth');
 
-router.get('/deuda', (request, response, next) => {
+router.get('/deuda', isAuth, (request, response, next) => {
     response.render('deuda');
 })
 
