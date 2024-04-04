@@ -1,0 +1,14 @@
+<%- include('includes/sidebar.ejs') %>
+
+<form action="/pago-alumno/descargar-historial" method="get">
+    <label for="idAlumno">Selecciona un alumno:</label>
+    <select name="idAlumno" id="idAlumno">
+    <% alumnos.forEach(function(alumno){ %>
+        <option value="<%= alumno.id %>"><%= alumno.nombre %></option>
+    <% }) %>
+    </select>
+    <button type="submit">Descargar Historial de Pagos</button>
+</form>
+
+
+<%- include('includes/foot.ejs') %>
