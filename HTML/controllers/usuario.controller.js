@@ -13,8 +13,15 @@ exports.get_login = (request, response, next) => {
 };
 
 exports.get_home = (request, response, next) => {
-    response.render('home', {
-        correo: request.session.correo || '',
+    Usuario.fetch(request.params.correo)
+    .then(([users, fieldData]) => {
+        response.render('home', {
+            usuariosDB: users,
+            correo: request.session.correo || '',
+        });
+    })
+    .catch(error => {
+        console.log(error)
     })
 }
 
@@ -76,3 +83,4 @@ exports.post_signup = (request, response, next) => {
         response.redirect('/user/signup');
     })
 }
+

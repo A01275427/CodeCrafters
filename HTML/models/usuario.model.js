@@ -31,11 +31,23 @@ module.exports = class Usuario {
         })
     }
 
-    static fetchOne(correo, password) {
+    static fetchAll() {
+        return db.execute('SELECT * FROM Usuario');
+    }
+
+    static fetchOne(correo) {
         return db.execute(
             'SELECT * FROM Usuario WHERE Correo_electronico=?',
             [correo]
         );
+    }
+
+    static fetch(correo) {
+        if (correo) {
+            return this.fetchOne(correo);
+        } else {
+            return this.fetchAll();
+        }
     }
 
 }

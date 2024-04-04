@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
@@ -58,25 +56,29 @@
                     </li>
 
                 </ul>
+
+                <% for (let datos of usuariosDB) { %>
                 <div class="profile_content">
                     <div class="profile">
                         <div class="profile_details">
                             <img src="profile.png" alt="">
                             <div class="name_role">
-                                <div class="name">Leví Díaz</div>
-                                <div class="role">Usuario</div>
+                                <div class="name">
+                                        <%=datos.Nombre%>
+                                    </div>
+                                    <div class="role">Usuario</div>
+                                </div>
                             </div>
+                            <a href="/user/logout">
+                                <i class='bx bx-log-out' id="log_out"></i>
+                            </a>
                         </div>
-                        <a href="/user/logout">
-                            <i class='bx bx-log-out' id="log_out"></i>
-                        </a>
+                        
                     </div>
-                    
-                </div>
+                    <% } %>
             </div>
             
         </div>
 
         <script src="/sidebar.js"></script>
-    </body>
-</html>
+    
