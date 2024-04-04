@@ -5,7 +5,7 @@ exports.get_login = (request, response, next) => {
     const error = request.session.error || '';
     request.session.error = '';
     response.render('login', {
-        username: request.session.username || '',
+        correo: request.session.correo || '',
         registrar: false,
         error: error,
         csrfToken: request.csrfToken(),
@@ -14,20 +14,20 @@ exports.get_login = (request, response, next) => {
 
 exports.get_home = (request, response, next) => {
     response.render('home', {
-        username: request.session.username || '',
+        correo: request.session.correo || '',
     })
 }
 
 exports.post_login = (request, response, next) => {
-    Usuario.fetchOne(request.body.username)
+    Usuario.fetchOne(request.body.correo)
     .then(([users, fieldData]) => {
         if(users.length == 1) {
             const user = users[0];
-            bcrypt.compare(request.body.password, user.password)
+            bcrypt.compare(request.body.password, user.Contrasena)
             .then(doMatch => {
                 if (doMatch) {
                     request.session.isLoggedIn = true;
-                    request.session.username = user.username;
+                    request.session.correo = user.correo;
                     return request.session.save(err => {
                         response.redirect('/');
                     });
@@ -37,6 +37,8 @@ exports.post_login = (request, response, next) => {
                 }
             })
             .catch((error) => {
+                console.log(user.Contrasena);
+                console.log(request.body.password);
                 console.log(error);
             })
         }
@@ -54,7 +56,7 @@ exports.get_signup = (request, response, next) => {
     const error = request.session.error || '';
     request.session.error = '';
     response.render('login', {
-        username: request.session.username || '',
+        correo: request.session.correo || '',
         registrar: true,
         error: error,
         csrfToken: request.csrfToken(),
@@ -63,7 +65,7 @@ exports.get_signup = (request, response, next) => {
 }
 
 exports.post_signup = (request, response, next) => {
-    const nuevo_usuario = new Usuario(request.body.username, request.body.password);
+    const nuevo_usuario = new Usuario(request.body.correo, request.body.nombre, request.body.matricula, request.body.beca, request.body.ref ,request.body.password, );
     nuevo_usuario.save()
     .then(([rows, fieldData]) => {
         response.redirect('/user/login');
