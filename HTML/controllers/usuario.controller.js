@@ -13,13 +13,19 @@ exports.get_login = (request, response, next) => {
 };
 
 exports.get_home = (request, response, next) => {
-    response.render('home', {
-        correo: request.session.correo || '',
+    Usuario.fetch(request.params.correo)
+    .then(([users, fieldData]) => {
+        response.render('includes/sidebar', {
+            usuariosDB: users,
+            correo: request.session.correo || '',
+        });
+    })
+    .catch(error => {
+        console.log(error)
     })
 }
 
 exports.post_login = (request, response, next) => {
-    console.log(request.body);
     Usuario.fetchOne(request.body.correo)
     .then(([users, fieldData]) => {
         if(users.length == 1) {
@@ -43,7 +49,7 @@ exports.post_login = (request, response, next) => {
                 console.log(error);
             })
         }
-    }).catch(err => console.log(err));
+    })
 }
 
 exports.get_logout = (request, response, next) => {
@@ -66,7 +72,6 @@ exports.get_signup = (request, response, next) => {
 }
 
 exports.post_signup = (request, response, next) => {
-    console.log(request.body);
     const nuevo_usuario = new Usuario(request.body.correo, request.body.nombre, request.body.matricula, request.body.beca, request.body.ref ,request.body.password, );
     nuevo_usuario.save()
     .then(([rows, fieldData]) => {
@@ -78,3 +83,4 @@ exports.post_signup = (request, response, next) => {
         response.redirect('/user/signup');
     })
 }
+

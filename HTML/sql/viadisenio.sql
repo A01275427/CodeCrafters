@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 04, 2024 at 05:09 AM
+-- Generation Time: Apr 04, 2024 at 01:00 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -526,8 +526,7 @@ INSERT INTO `Usuario` (`IDUsuario`, `Nombre`, `Matricula`, `Correo_electronico`,
 (22, 'Ana', 456789012, 'ana3@example.com', 'pass123', 'Beca V', 'Referencia 22'),
 (23, 'Luis', 567890123, 'luis2@example.com', 'securepass', 'Beca W', 'Referencia 23'),
 (24, 'Laura', 678901234, 'laura2@example.com', 'userpass', 'Beca X', 'Referencia 24'),
-(25, 'Pedro', 789012345, 'pedro2@example.com', '123abc', 'Beca Y', 'Referencia 25'),
-(26, 'Leví', 120887, 'levi@correo.com', '$2a$12$/HoOkIS2T9z47fuhF8myoedqf0IeW2Pw3iXfGXbgI20etqHHnsAge', 'Beca F', '26');
+(25, 'Pedro', 789012345, 'pedro2@example.com', '123abc', 'Beca Y', 'Referencia 25');
 
 --
 -- Indexes for dumped tables
@@ -607,7 +606,7 @@ ALTER TABLE `Usuario`
 -- AUTO_INCREMENT for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `IDUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `IDUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
