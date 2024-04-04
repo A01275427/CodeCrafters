@@ -6,14 +6,14 @@ const pool = mysql.createPool({
     user: 'root',
     database: 'viadisenio',
     password: '',
-    port: 4306,
+    port: 3306,
 });
 
-pool.query = util.promisify(pool.query);
+const poolPromise = pool.promise();
 
-exports.obtenerPagosPorAlumno = (idAlumno) => {
+poolPromise.obtenerPagosPorAlumno = (idAlumno) => {
     const query = 'SELECT fecha, monto, metodo, nota FROM pagos WHERE id_alumno = ?';
-    return pool.query(query, [idAlumno]);
+    return poolPromise.query(query, [idAlumno]);
 };
 
-module.exports = pool.promise();
+module.exports = poolPromise;

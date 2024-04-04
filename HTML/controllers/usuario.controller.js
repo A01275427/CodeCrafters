@@ -42,7 +42,7 @@ exports.post_login = (request, response, next) => {
                 console.log(error);
             })
         }
-    })
+    }).catch(err => console.log(err));
 }
 
 exports.get_logout = (request, response, next) => {
