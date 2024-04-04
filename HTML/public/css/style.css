@@ -95,7 +95,7 @@ body{
 .circle_image {
     position: absolute;
     z-index: -1;
-    right: 1000px;
+    right: 70%;
 
 }
 
