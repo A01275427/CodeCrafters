@@ -43,3 +43,5 @@ exports.downloadPaymentHistory = (req, res) => {
       res.status(500).send('Error generando el historial de pagos');
     });
 };
+
+
