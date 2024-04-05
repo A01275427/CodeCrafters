@@ -17,7 +17,7 @@ app.use((request, response, next) => {
 });
 
 const rutasRegistrarPago = require('./routes/registrarPago.routes'); 
-const rutasDeuda = require('./routes/deuda.routes'); 
+const rutasDeuda = require('./routes/crearDeuda.routes'); 
 const rutasHistorialPagos = require('./routes/historialPagos.routes'); 
 
 app.use('/user', rutasRegistrarPago);
@@ -30,5 +30,4 @@ app.listen(2050);
 
 // Código agregado para probar la conexión y consulta a la base de datos
 const db = require('./util/database');
-
 

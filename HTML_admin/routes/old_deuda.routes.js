@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/registrarPago', (request, response, next) => {
-    response.render('registrarPago');
+router.get('/deuda', (request, response, next) => {
+    response.render('deuda');
 })
 
 module.exports = router;
