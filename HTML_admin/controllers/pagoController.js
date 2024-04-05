@@ -8,7 +8,7 @@ exports.postRegistrarPago = (req, res, next) => {
     const nuevoPago = new Pago(req.body.matriculaAlumno, req.body.monto, req.body.referencia, req.body.concepto, req.body.banco, req.body.fechaPago, req.body.porcentaje, req.body.mes, req.body.nota);
     nuevoPago.save()
         .then(() => {
-            res.redirect('/pagos');
+            res.redirect('/Pago');
         })
         .catch(err => console.log(err));
 };

@@ -1,27 +1,28 @@
 const db = require('../util/database');
 
 class Pago {
-    constructor(idPago, idUsuario, idDeuda, cantPagada, fechaDePago, metodo, banco, nota) {
-        this.idPago = idPago;
-        this.idUsuario = idUsuario;
-        this.idDeuda = idDeuda;
-        this.cantPagada = cantPagada;
-        this.fechaDePago = fechaDePago;
-        this.metodo = metodo;
-        this.banco = banco;
-        this.nota = nota;
+    constructor(IDUsuario, IDDueda, Cant_pagada, Fecha_de_pago, Metodo, Banco, Nota, Prorroga) {
+        this.IDUsuario = IDUsuario;
+        this.IDDeuda = IDDueda;
+        this.Cant_pagada = Cant_pagada;
+        this.Fecha_de_pago = Fecha_de_pago;
+        this.Metodo = Metodo;
+        this.Banco = Banco;
+        this.Nota = Nota;
+        this.Prorroga = Prorroga;
     }
-	}
 
     // Guardar un nuevo pago en la base de datos
     save() {
-        return db.execute('INSERT INTO pagos (...) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        [this.matriculaAlumno, this.monto, this.referencia, this.concepto, this.banco, this.fechaPago, this.porcentaje, this.mes, this.nota]);
+        return db.execute(
+            'INSERT INTO Pago (IDUsuario, IDDueda, Cant_pagada, Fecha_de_pago, Metodo, Banco, Nota, Prorroga) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            [this.IDUsuario, this.IDDueda, this.Cant_pagada, this.Fecha_de_Pago, this.Metodo, this.Banco, this.Nota, this.Prorroga]
+        );
     }
 
     // Recuperar todos los pagos de la base de datos
     static fetchAll() {
-        return db.execute('SELECT * FROM pagos');
+        return db.execute('SELECT * FROM Pago');
     }
 }
 

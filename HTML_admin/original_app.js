@@ -27,8 +27,3 @@ app.use('/user', rutasHistorialPagos);
 
 app.listen(2050);
 
-
-// Código agregado para probar la conexión y consulta a la base de datos
-const db = require('./util/database');
-
-
