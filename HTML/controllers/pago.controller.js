@@ -2,10 +2,10 @@ const PDFDocument = require('pdfkit');
 const db = require('../util/database');
 
 exports.getPaymentHistory = (req, res) => {
-  const userID = req.params.userID; // Obtén el userID de los parámetros de la ruta
+  const userID = req.params.userID; 
   db.execute('SELECT * FROM Pago WHERE IDUsuario = ?', [userID])
     .then(([rows]) => {
-      res.render('historialPago', { // Asegúrate de que esta vista exista en tu carpeta de vistas
+      res.render('historialPago', { 
         pageTitle: 'Historial de Pagos',
         payments: rows,
         userID: userID

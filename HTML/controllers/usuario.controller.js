@@ -84,3 +84,48 @@ exports.post_signup = (request, response, next) => {
     })
 }
 
+
+exports.getHistorialPago = async (req, res, next) => {
+    // Aquí asumimos que tienes un modelo Pago que puede recuperar todos los pagos o los de un usuario específico
+    // Deberás ajustar esto para que coincida con tu lógica de modelos y base de datos actual
+    try {
+        const [pagos, fieldData] = await Pago.fetchAll(); // Método ficticio, reemplaza con el tuyo
+        res.render('historialPago', {
+            pageTitle: 'Historial de Pagos',
+            payments: pagos,
+            userID: req.session.userID // Asegúrate de que esta variable se establece cuando el usuario inicia sesión
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+};
+
+exports.descargarPDF = async (req, res, next) => {
+    const userID = req.params.id;
+    try {
+        const [pagos, fieldData] = await Pago.fetchByUserID(userID); // Método ficticio, reemplaza con el tuyo
+        const doc = new PDFDocument();
+
+        res.setHeader('Content-Disposition', `attachment; filename="historial-${userID}.pdf"`);
+        res.setHeader('Content-Type', 'application/pdf');
+
+        doc.pipe(res);
+        
+        doc.text(`Historial de Pagos para Usuario ID: ${userID}`, {
+            underline: true,
+            align: 'center'
+        });
+
+        doc.moveDown();
+        pagos.forEach(pago => {
+            doc.text(`ID Pago: ${pago.IDPago} - Cantidad: $${pago.Cant_pagada.toFixed(2)} - Fecha: ${pago.Fecha_de_pago.toLocaleDateString()} - Método: ${pago.Metodo}`);
+            doc.moveDown();
+        });
+
+        doc.end();
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+};
