@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <title><%= pageTitle %></title>
+  <!-- Asegúrate de incluir aquí los enlaces a tus archivos CSS y JS -->
 </head>
 <body>
   <h1>Historial de Pagos</h1>
@@ -32,7 +33,7 @@
     </tbody>
   </table>
 
-  <form action="/descargar-historial/<%= userID %>" method="GET">
+  <form action="/pagos/descargar-historial/<%= userID %>" method="GET">
     <button type="submit">Descargar como PDF</button>
   </form>
 

@@ -5,7 +5,7 @@ exports.getPaymentHistory = (req, res) => {
   const userID = req.params.userID; // Obtén el userID de los parámetros de la ruta
   db.execute('SELECT * FROM Pago WHERE IDUsuario = ?', [userID])
     .then(([rows]) => {
-      res.render('payment-history', { // Asegúrate de que esta vista exista en tu carpeta de vistas
+      res.render('historialPago', { // Asegúrate de que esta vista exista en tu carpeta de vistas
         pageTitle: 'Historial de Pagos',
         payments: rows,
         userID: userID
