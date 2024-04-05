@@ -1,18 +1,9 @@
-// Suponiendo que tienes un archivo de rutas así:
-// routes/pagos.js
 const express = require('express');
 const router = express.Router();
-const db = require('../util/database');
+const pagoController = require('../controllers/pago.controller');
 
-router.get('/pagos', (req, res, next) => {
-  db.execute('SELECT * FROM pagos')
-    .then(([rows, fieldData]) => {
-      res.json(rows);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ error: err });
-    });
-});
+router.get('/historial-pagos/:userID', pagoController.getPaymentHistory);
+
+router.get('/descargar-historial/:userID', pagoController.downloadPaymentHistory);
 
 module.exports = router;

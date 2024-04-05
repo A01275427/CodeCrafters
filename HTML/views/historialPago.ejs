@@ -1,0 +1,40 @@
+<%- include('includes/sidebar.ejs') %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= pageTitle %></title>
+</head>
+<body>
+  <h1>Historial de Pagos</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID Pago</th>
+        <th>ID Usuario</th>
+        <th>Cantidad Pagada</th>
+        <th>Fecha de Pago</th>
+        <th>Método</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% payments.forEach(function(payment) { %>
+        <tr>
+          <td><%= payment.IDPago %></td>
+          <td><%= payment.IDUsuario %></td>
+          <td>$<%= payment.Cant_pagada.toFixed(2) %></td>
+          <td><%= new Date(payment.Fecha_de_pago).toLocaleDateString() %></td>
+          <td><%= payment.Metodo %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <form action="/descargar-historial/<%= userID %>" method="GET">
+    <button type="submit">Descargar como PDF</button>
+  </form>
+
+</body>
+</html>
