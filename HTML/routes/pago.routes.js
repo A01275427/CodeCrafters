@@ -1,7 +1,18 @@
+// Suponiendo que tienes un archivo de rutas así:
+// routes/pagos.js
 const express = require('express');
 const router = express.Router();
-const pagoController = require('../controllers/pago.controller');
+const db = require('../util/database');
 
-router.get('/descargarpdf', pagoController.descargarHistorialPagos);
+router.get('/pagos', (req, res, next) => {
+  db.execute('SELECT * FROM pagos')
+    .then(([rows, fieldData]) => {
+      res.json(rows);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+});
 
 module.exports = router;
