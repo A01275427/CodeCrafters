@@ -12,35 +12,43 @@
         <form action="/user/registrarPago" method="POST"> 
 
             <div class="input-box">
-                <input type="number" name="IDUsuario" placeholder="ID del Usuario" required>
+		 <label for="IDUsuario">ID del Usuario:</label>
+                <input type="number" name="IDUsuario" placeholder="ej: 22" required>
             </div>
 
             <div class="input-box">
-                <input type="number" name="IDDueda" placeholder="ID de la Deuda" required>
+		<label for="IDDueda">ID de la Deuda:</label>
+                <input type="number" name="IDDueda" placeholder="ej: 99" required>
             </div>
 
             <div class="input-box">
-                <input type="text" name="Cant_pagada" placeholder="Cantidad Pagada" required>
+		<label for="Cant_pagada">Cantidad Pagada:</label>
+                <input type="text" name="Cant_pagada" placeholder="ej: 1560" required>
             </div>
 
             <div class="input-box">
-                <input type="text" name="Fecha_de_pago" placeholder="Fecha de Pago" onfocus="(this.type='datetime')" required>
+		<label for="Fecha_de_pago">Fecha de Pago:</label>
+                <input type="text" name="Fecha_de_pago" placeholder="ej: 2024-04-04" onfocus="(this.type='datetime')" required>
             </div>
 
             <div class="input-box">
-                <input type="text" name="Metodo" placeholder="Método de Pago" required>
+		<label for="Metodo">Método de Pago:</label>
+                <input type="text" name="Metodo" placeholder="ej: Efectivo" required>
             </div>
 
             <div class="input-box">
-                <input type="text" name="Banco" placeholder="Banco" required>
+		<label for="Banco">Banco:</label>
+                <input type="text" name="Banco" placeholder="ej: Santander" required>
             </div>
 
             <div class="input-box">
-                <input type="text" name="Nota" placeholder="Nota" required>
+		<label for="Nota">Nota:</label>    
+                <input type="text" name="Nota" placeholder="ej: Colegiatura" required>
             </div>
 
             <div class="input-box">
-                <input type="text" name="Prorroga" placeholder="Prórroga" onfocus="(this.type='datetime')">
+		<label for="Prorroga">Prórroga:</label>
+                <input type="text" name="Prorroga" placeholder="ej: 2024-05-05" onfocus="(this.type='datetime')">
             </div>
 
             <div class="space"></div>
