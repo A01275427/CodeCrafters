@@ -15,7 +15,7 @@ exports.get_login = (request, response, next) => {
 exports.get_home = (request, response, next) => {
     Usuario.fetch(request.params.correo)
     .then(([users, fieldData]) => {
-        response.render('includes/sidebar', {
+        response.render('home', {
             usuariosDB: users,
             correo: request.session.correo || '',
         });
@@ -28,18 +28,20 @@ exports.get_home = (request, response, next) => {
 exports.post_login = (request, response, next) => {
     Usuario.fetchOne(request.body.correo)
     .then(([users, fieldData]) => {
+        console.log(request.body.correo)
         if(users.length == 1) {
             const user = users[0];
             bcrypt.compare(request.body.password, user.Contrasena)
             .then(doMatch => {
                 if (doMatch) {
                     request.session.isLoggedIn = true;
-                    request.session.correo = user.correo;
+                    request.session.correo = user.Correo_electronico;
+                    console.log('Correo:', user.Correo_electronico)
                     return request.session.save(err => {
                         response.redirect('/');
                     });
                 } else {
-                    request.session.error = 'El usuario y/o contraseña son incorrectos.';
+                    request.session.error = 'El correo y/o contraseña son incorrectos.';
                     return response.redirect('/user/login')
                 }
             })
@@ -47,7 +49,11 @@ exports.post_login = (request, response, next) => {
                 console.log(user.Contrasena);
                 console.log(request.body.password);
                 console.log(error);
-            })
+            });
+        }
+        else {
+            request.session.error = 'El correo y/o contraseña son incorrectos.'
+            response.redirect('/user/login');
         }
     })
 }
@@ -83,4 +89,3 @@ exports.post_signup = (request, response, next) => {
         response.redirect('/user/signup');
     })
 }
-
